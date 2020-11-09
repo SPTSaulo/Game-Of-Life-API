@@ -1,18 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using GameOfLifeAPI.Repository;
+using GameOfLifeAPI.UseCases;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
+using System;
+using System.IO;
+using System.Reflection;
 
-namespace GameOfLifeAPI
-{
+namespace GameOfLifeAPI {
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -26,6 +24,32 @@ namespace GameOfLifeAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddMvc(o => o.InputFormatters.Insert(0, new RawRequestBodyFormatter()));
+            services.AddSingleton<SaveBoardRepository, SaveBoardInMemory>();
+            services.AddSingleton<SetNewBoardCommandHandler, SetNewBoardCommandHandler>();
+            services.AddSingleton<GetActualBoardCommandHandler, GetActualBoardCommandHandler>();
+            services.AddSingleton<GetNextGenerationBoardCommandHandler, GetNextGenerationBoardCommandHandler>();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo 
+                { 
+                    Title = "GAMEOFLIFE API", 
+                    Version = "v1", 
+                    Description = "Api para el juego de la vida" ,
+                    License = new OpenApiLicense {
+                        Name = "MIT",
+                        Url = new Uri("https://es.wikipedia.org/wiki/Licencia_MIT")
+                     },
+                     Contact = new OpenApiContact {
+                         Name = "Saulo Santana",
+                         Email = "sausantana@domingoalonsogroup.com"
+                     }
+                });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +70,14 @@ namespace GameOfLifeAPI
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "GAMEOFLIFE API V1");
+            });
+
+
         }
     }
 }

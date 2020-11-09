@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GameOfLifeAPI</name>
+    </assembly>
+    <members>
+        <member name="M:GameOfLifeAPI.Controllers.GameOfLifeController.Get">
+            <summary>
+            Return the actual board generation
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GameOfLifeAPI.Controllers.GameOfLifeController.Post">
+            <summary>
+            Return the next board generation
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GameOfLifeAPI.Controllers.GameOfLifeController.PostE(System.String)">
+            <summary>
+            Set a new board
+            </summary>
+            <param name="userBoard"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
