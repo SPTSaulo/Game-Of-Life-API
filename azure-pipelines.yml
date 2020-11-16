@@ -16,7 +16,7 @@ steps:
   displayName: use sdk 3.1.x version
   inputs:
     packageType: runtime
-    version: 3.1.401
+    version: 3.1.4
 
 - task: DotNetCoreCLI@2
   displayName: build
