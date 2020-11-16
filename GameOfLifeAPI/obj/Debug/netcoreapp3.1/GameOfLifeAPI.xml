@@ -10,13 +10,13 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GameOfLifeAPI.Controllers.GameOfLifeController.Post">
+        <member name="M:GameOfLifeAPI.Controllers.GameOfLifeController.PostGetGeneration">
             <summary>
             Return the next board generation
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GameOfLifeAPI.Controllers.GameOfLifeController.PostE(System.String)">
+        <member name="M:GameOfLifeAPI.Controllers.GameOfLifeController.PostSetGeneration(System.String)">
             <summary>
             Set a new board
             </summary>

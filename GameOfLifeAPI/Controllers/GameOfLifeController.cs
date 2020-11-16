@@ -41,7 +41,7 @@ namespace GameOfLifeAPI.Controllers {
         [ProducesResponseType(typeof(List<string>), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public ActionResult<string> Post() {
+        public ActionResult<string> PostGetGeneration() {
             string board = getNextGenerationBoardCommandHandler.Execute();
             return Ok(board);
         }
@@ -56,7 +56,7 @@ namespace GameOfLifeAPI.Controllers {
         [ProducesResponseType(typeof(List<string>), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public ActionResult<bool> PostE([FromBody] string userBoard)
+        public ActionResult<bool> PostSetGeneration([FromBody] string userBoard)
         {
             setNewBoardCommandHandler.Execute(userBoard);
             return Ok(true);

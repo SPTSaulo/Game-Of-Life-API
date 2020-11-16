@@ -1,4 +1,4 @@
-﻿using GameOfLifeAPI.Models;
+﻿using GameOfLife;
 
 namespace GameOfLifeAPI.Repository
 {

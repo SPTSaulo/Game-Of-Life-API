@@ -25,8 +25,8 @@ namespace GameOfLifeAPI {
         {
             services.AddControllers();
             services.AddMvc(o => o.InputFormatters.Insert(0, new RawRequestBodyFormatter()));
-            services.AddSingleton<SaveBoardRepository, SaveBoardInMemory>();
-            services.AddSingleton<SetNewBoardCommandHandler, SetNewBoardCommandHandler>();
+            services.AddTransient<SaveBoardRepository, SaveBoardInMemory>();
+            services.AddScoped<SetNewBoardCommandHandler, SetNewBoardCommandHandler>();
             services.AddSingleton<GetActualBoardCommandHandler, GetActualBoardCommandHandler>();
             services.AddSingleton<GetNextGenerationBoardCommandHandler, GetNextGenerationBoardCommandHandler>();
             services.AddSwaggerGen(c =>
@@ -50,6 +50,16 @@ namespace GameOfLifeAPI {
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
+
+
+            services
+                .AddHealthChecks()
+                .AddCheck<FileHealthChecks>("file_health_checks");
+            services
+                .AddHealthChecksUI(setupSettings: setup => {
+                    setup.AddHealthCheckEndpoint("file_health_checks", "https://localhost:5001/health");
+                })
+                .AddInMemoryStorage();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,12 +73,15 @@ namespace GameOfLifeAPI {
             app.UseHttpsRedirection();
 
             app.UseRouting();
+                
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("/health");
+               
             });
 
             app.UseSwagger();

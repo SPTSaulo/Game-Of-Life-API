@@ -1,4 +1,4 @@
-﻿using GameOfLifeAPI.Models;
+﻿using GameOfLife;
 using GameOfLifeAPI.Repository;
 using Newtonsoft.Json;
 
