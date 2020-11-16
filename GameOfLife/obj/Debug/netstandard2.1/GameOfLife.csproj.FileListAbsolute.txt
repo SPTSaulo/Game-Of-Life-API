@@ -1,0 +1,9 @@
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLife\bin\Debug\netstandard2.1\GameOfLife.deps.json
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLife\bin\Debug\netstandard2.1\GameOfLife.dll
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLife\bin\Debug\netstandard2.1\GameOfLife.pdb
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLife\obj\Debug\netstandard2.1\GameOfLife.csprojAssemblyReference.cache
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLife\obj\Debug\netstandard2.1\GameOfLife.AssemblyInfoInputs.cache
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLife\obj\Debug\netstandard2.1\GameOfLife.AssemblyInfo.cs
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLife\obj\Debug\netstandard2.1\GameOfLife.csproj.CoreCompileInputs.cache
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLife\obj\Debug\netstandard2.1\GameOfLife.dll
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLife\obj\Debug\netstandard2.1\GameOfLife.pdb

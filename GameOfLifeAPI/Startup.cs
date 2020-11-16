@@ -25,8 +25,8 @@ namespace GameOfLifeAPI {
         {
             services.AddControllers();
             services.AddMvc(o => o.InputFormatters.Insert(0, new RawRequestBodyFormatter()));
-            services.AddTransient<SaveBoardRepository, SaveBoardInMemory>();
-            services.AddScoped<SetNewBoardCommandHandler, SetNewBoardCommandHandler>();
+            services.AddSingleton<SaveBoardRepository, SaveBoardInMemory>();
+            services.AddSingleton<SetNewBoardCommandHandler, SetNewBoardCommandHandler>();
             services.AddSingleton<GetActualBoardCommandHandler, GetActualBoardCommandHandler>();
             services.AddSingleton<GetNextGenerationBoardCommandHandler, GetNextGenerationBoardCommandHandler>();
             services.AddSwaggerGen(c =>

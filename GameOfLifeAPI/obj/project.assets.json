@@ -3291,7 +3291,7 @@
       },
       "GameOfLife/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v2.2",
+        "framework": ".NETStandard,Version=v2.1",
         "compile": {
           "bin/placeholder/GameOfLife.dll": {}
         },
