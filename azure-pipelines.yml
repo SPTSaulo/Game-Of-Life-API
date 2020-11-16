@@ -28,7 +28,7 @@ steps:
   displayName: test
   inputs:
     command: test
-    projects: 'GameOfLifeAPI.Test./**.sln'
+    projects: 'GameOfLife.Tests/GameOfLife.Tests.csproj'
     arguments: '--no-restore --no-build'
 
 - task: DotNetCoreCLI@2
