@@ -9,7 +9,7 @@ trigger:
       - master
 
 pool:
-  vmImage: 'windows-latest'
+  name: 'Aida'
 
 steps:
 - task: UseDotNet@2
@@ -32,7 +32,7 @@ steps:
     arguments: '--no-restore --no-build'
 
 - task: DotNetCoreCLI@2
-  displayName: package
+  displayName: publish
   inputs:
     command: publish
     publishWebProjects: True
