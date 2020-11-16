@@ -32,6 +32,7 @@ steps:
     arguments: '--no-restore --no-build'
 
 - task: DotNetCoreCLI@2
+  displayName: package
   inputs:
     command: publish
     publishWebProjects: True
