@@ -7,9 +7,13 @@ trigger:
   branches:
     include:
       - master
+  paths: 
+   exclude:
+     - README.md
+     - azure-pipelines.yml
 
 pool:
-  vmImage: 'windows-latest'
+  name: 'Aida'
 
 steps:
 - task: UseDotNet@2
@@ -32,6 +36,7 @@ steps:
     arguments: '--no-restore --no-build'
 
 - task: DotNetCoreCLI@2
+  displayName: publish
   inputs:
     command: publish
     publishWebProjects: True
