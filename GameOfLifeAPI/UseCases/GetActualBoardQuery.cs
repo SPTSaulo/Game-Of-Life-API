@@ -2,14 +2,14 @@
 using Newtonsoft.Json;
 
 namespace GameOfLifeAPI.UseCases {
-    public class GetNextGenerationBoardCommandHandler {
+    public class GetActualBoardQuery {
         private readonly SaveBoardRepository saveBoardRepository;
-        public GetNextGenerationBoardCommandHandler(SaveBoardRepository saveBoardRepository) {
+
+        public GetActualBoardQuery(SaveBoardRepository saveBoardRepository) {
             this.saveBoardRepository = saveBoardRepository;
         }
 
         public string Execute() {
-            saveBoardRepository.UpdateBoard();
             return JsonConvert.SerializeObject(saveBoardRepository.GetBoard());
         }
     }

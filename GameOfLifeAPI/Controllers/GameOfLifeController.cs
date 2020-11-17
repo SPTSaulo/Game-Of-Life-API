@@ -4,18 +4,18 @@ using System.Collections.Generic;
 using System.Net;
 
 namespace GameOfLifeAPI.Controllers {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/board")]
     [ApiController]
     public class GameOfLifeController : ControllerBase {
 
         private readonly SetNewBoardCommandHandler setNewBoardCommandHandler;
-        private readonly GetActualBoardCommandHandler getActualBoardCommandHandler;
-        private readonly GetNextGenerationBoardCommandHandler getNextGenerationBoardCommandHandler;
+        private readonly GetActualBoardQuery getActualBoardQuery;
+        private readonly GetNextGenerationBoardQuery getNextGenerationBoardQuery;
 
-        public GameOfLifeController(SetNewBoardCommandHandler setNewBoardCommandHandler, GetActualBoardCommandHandler getActualBoardCommandHandler, GetNextGenerationBoardCommandHandler getNextGenerationBoardCommandHandler) {
+        public GameOfLifeController(SetNewBoardCommandHandler setNewBoardCommandHandler, GetActualBoardQuery getActualBoardQuery, GetNextGenerationBoardQuery getNextGenerationBoardQuery) {
             this.setNewBoardCommandHandler = setNewBoardCommandHandler;
-            this.getActualBoardCommandHandler = getActualBoardCommandHandler;
-            this.getNextGenerationBoardCommandHandler = getNextGenerationBoardCommandHandler;
+            this.getActualBoardQuery = getActualBoardQuery;
+            this.getNextGenerationBoardQuery = getNextGenerationBoardQuery;
         }
         
         /// <summary>
@@ -28,7 +28,7 @@ namespace GameOfLifeAPI.Controllers {
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public ActionResult<string> Get() {
-            string board = getActualBoardCommandHandler.Execute();
+            string board = getActualBoardQuery.Execute();
             return Ok(board);
         }
 
@@ -42,7 +42,7 @@ namespace GameOfLifeAPI.Controllers {
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public ActionResult<string> PostGetGeneration() {
-            string board = getNextGenerationBoardCommandHandler.Execute();
+            string board = getNextGenerationBoardQuery.Execute();
             return Ok(board);
         }
 
@@ -51,7 +51,7 @@ namespace GameOfLifeAPI.Controllers {
         /// </summary>
         /// <param name="userBoard"></param>
         /// <returns></returns>
-        [HttpPost("{id}")]
+        [HttpPost("set_board")]
         [Consumes("text/plain")]
         [ProducesResponseType(typeof(List<string>), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.BadRequest)]

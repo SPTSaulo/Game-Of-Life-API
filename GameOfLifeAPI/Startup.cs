@@ -27,8 +27,8 @@ namespace GameOfLifeAPI {
             services.AddMvc(o => o.InputFormatters.Insert(0, new RawRequestBodyFormatter()));
             services.AddSingleton<SaveBoardRepository, SaveBoardInMemory>();
             services.AddSingleton<SetNewBoardCommandHandler, SetNewBoardCommandHandler>();
-            services.AddSingleton<GetActualBoardCommandHandler, GetActualBoardCommandHandler>();
-            services.AddSingleton<GetNextGenerationBoardCommandHandler, GetNextGenerationBoardCommandHandler>();
+            services.AddSingleton<GetActualBoardQuery, GetActualBoardQuery>();
+            services.AddSingleton<GetNextGenerationBoardQuery, GetNextGenerationBoardQuery>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo 
