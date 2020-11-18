@@ -20,7 +20,7 @@
     "GameOfLifeAPI": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/gameoflife/board/actual_board",
+      "launchUrl": "api/gameoflife/board",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

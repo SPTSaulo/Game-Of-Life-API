@@ -45,7 +45,7 @@ namespace GameOfLifeAPI {
                          Email = "sausantana@domingoalonsogroup.com"
                      }
                 });
-
+                
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
@@ -55,11 +55,6 @@ namespace GameOfLifeAPI {
             services
                 .AddHealthChecks()
                 .AddCheck<FileHealthChecks>("file_health_checks");
-            services
-                .AddHealthChecksUI(setupSettings: setup => {
-                    setup.AddHealthCheckEndpoint("file_health_checks", "https://localhost:5001/health");
-                })
-                .AddInMemoryStorage();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

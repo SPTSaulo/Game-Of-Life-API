@@ -1,5 +1,7 @@
-﻿using GameOfLifeAPI.UseCases;
+﻿using GameOfLife;
+using GameOfLifeAPI.UseCases;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net;
 
@@ -24,9 +26,6 @@ namespace GameOfLifeAPI.Controllers {
         /// <returns></returns>
         [HttpGet]
         [Produces("application/json")]
-        [ProducesResponseType(typeof(List<string>), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(string), (int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public ActionResult<string> Get() {
             string board = getActualBoardQuery.Execute();
             return Ok(board);
@@ -38,9 +37,6 @@ namespace GameOfLifeAPI.Controllers {
         /// <returns></returns>
         [HttpPost]
         [Produces("application/json")]
-        [ProducesResponseType(typeof(List<string>), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(string), (int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public ActionResult<string> PostGetGeneration() {
             string board = getNextGenerationBoardQuery.Execute();
             return Ok(board);
@@ -53,11 +49,7 @@ namespace GameOfLifeAPI.Controllers {
         /// <returns></returns>
         [HttpPost("set_board")]
         [Consumes("text/plain")]
-        [ProducesResponseType(typeof(List<string>), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(string), (int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public ActionResult<bool> PostSetGeneration([FromBody] string userBoard)
-        {
+        public ActionResult<bool> PostSetGeneration([FromBody] string userBoard) {
             setNewBoardCommandHandler.Execute(userBoard);
             return Ok(true);
         }
