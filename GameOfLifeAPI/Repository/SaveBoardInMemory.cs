@@ -20,7 +20,7 @@ namespace GameOfLifeAPI.Repository {
 
         public void UpdateBoard() {
             board = board.GetNextGenerationBoard();
-            File.AppendAllText("boardLog.txt", board.GetStringFromBoard());
+            File.AppendAllText(@"boardLog.txt", board.GetStringFromBoard());
         }
     }
 }
