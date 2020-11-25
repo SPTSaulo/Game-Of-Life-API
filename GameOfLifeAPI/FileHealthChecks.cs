@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace GameOfLifeAPI {
     public class FileHealthChecks : IHealthCheck {
         public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default) {
-            var path = "C:\\Users\\sausantana\\source\\repos\\GameOfLifeAPI\\boardLog.txt";
+            var path = @"boardLog.txt";
             if (File.Exists(path)) {
                 try {
                     var healthCheckResultHealthy = File.OpenRead(path);
