@@ -10,7 +10,7 @@ namespace GameOfLifeAPI {
             var path = @"boardLog.txt";
             if (File.Exists(path)) {
                 try {
-                    var healthCheckResultHealthy = File.Open(path, FileMode.Open);
+                    var healthCheckResultHealthy = File.Open(path, FileMode.OpenOrCreate);
                     healthCheckResultHealthy.Close();
                     return Task.FromResult(HealthCheckResult.Healthy("A healthy result!"));
                 } catch (Exception e) {
