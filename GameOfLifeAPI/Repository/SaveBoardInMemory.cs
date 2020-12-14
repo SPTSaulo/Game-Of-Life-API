@@ -24,7 +24,7 @@ namespace GameOfLifeAPI.Repository {
 
         public void UpdateBoard() {
             board = board.GetNextGenerationBoard();
-            var filePath = configuration.GetValue<String>("FilePath");
+            var filePath = configuration["FilePath"];
             File.AppendAllText(@filePath, board.GetStringFromBoard());
         }
     }

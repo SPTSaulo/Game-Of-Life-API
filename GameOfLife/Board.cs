@@ -136,7 +136,7 @@ namespace GameOfLife {
                 }
                 description = description.Trim() + "\n";
             }
-            return description.Trim();
+            return description;
         }
     }
 }
