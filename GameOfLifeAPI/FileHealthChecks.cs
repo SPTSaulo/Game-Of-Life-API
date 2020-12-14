@@ -3,11 +3,19 @@ using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace GameOfLifeAPI {
     public class FileHealthChecks : IHealthCheck {
-        public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default) {
-            var path = @"boardLog.txt";
+        private readonly IConfiguration _configuration;
+
+        public FileHealthChecks(IConfiguration configuration)
+        {
+            this._configuration = configuration;
+        }
+        public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
+        {
+            var path = _configuration["FilePath"];
             if (File.Exists(path)) {
                 try {
 
