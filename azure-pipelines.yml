@@ -15,13 +15,21 @@ trigger:
 pool:
   name: 'Aida'
 
+variables:
+  FilePath : $(path)
+
 steps:
 - task: UseDotNet@2
   displayName: use sdk 3.1.x version
   inputs:
     packageType: runtime
     version: 3.1.4
-
+- task: FileTransform@1
+  displayName: "Variables transformation"
+  inputs:
+    folderPath: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    fileType: 'json'
+    targetFiles: '**/appsettings.json'
 - task: DotNetCoreCLI@2
   displayName: build
   inputs:
@@ -47,5 +55,6 @@ steps:
   inputs:
     pathToPublish: '$(Build.ArtifactStagingDirectory)'
     artifactName: drop
+
 
 
