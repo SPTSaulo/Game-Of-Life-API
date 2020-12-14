@@ -1,12 +1,16 @@
 ﻿using GameOfLife;
 using System;
 using System.IO;
+using Microsoft.Extensions.Configuration;
 
 namespace GameOfLifeAPI.Repository {
     public class SaveBoardInMemory : SaveBoardRepository {
+        private readonly IConfiguration configuration;
         private Board board;
 
-        public SaveBoardInMemory() {
+        public SaveBoardInMemory(IConfiguration configuration)
+        {
+            this.configuration = configuration;
             board = new Board(new Cell[,] {{ new Cell("Alive") }});
         }
 
@@ -20,7 +24,8 @@ namespace GameOfLifeAPI.Repository {
 
         public void UpdateBoard() {
             board = board.GetNextGenerationBoard();
-            File.AppendAllText(@"boardLog.txt", board.GetStringFromBoard());
+            var filePath = configuration.GetValue<String>("FilePath");
+            File.AppendAllText(@filePath, board.GetStringFromBoard());
         }
     }
 }

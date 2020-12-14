@@ -191,9 +191,9 @@ C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreap
 C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
 C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreapp3.1\YamlDotNet.dll
 C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreapp3.1\HealthChecks.UI.InMemory.Storage.dll
-C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\obj\Debug\netcoreapp3.1\GameOfLifeAPI.csproj.CoreCompileInputs.cache
-C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\obj\Debug\netcoreapp3.1\GameOfLifeAPI.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\obj\Debug\netcoreapp3.1\GameOfLifeAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreapp3.1\HealthChecks.UI.Client.dll
 C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreapp3.1\GameOfLife.dll
 C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreapp3.1\GameOfLife.pdb
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\obj\Debug\netcoreapp3.1\GameOfLifeAPI.csproj.CoreCompileInputs.cache
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\obj\Debug\netcoreapp3.1\GameOfLifeAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\obj\Debug\netcoreapp3.1\GameOfLifeAPI.MvcApplicationPartsAssemblyInfo.cache
