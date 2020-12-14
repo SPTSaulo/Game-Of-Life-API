@@ -16,7 +16,7 @@ pool:
   name: 'Aida'
 
 variables:
-  FilePath : 'boardLogAzure.txt'
+  FilePath : $(path)
 
 steps:
 - task: UseDotNet@2
