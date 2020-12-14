@@ -16,7 +16,7 @@ pool:
   name: 'Aida'
 
 variables:
-  FilePath : $(path)
+  FilePath : 'boardLogAzure.txt'
 
 steps:
 - task: UseDotNet@2
@@ -24,12 +24,14 @@ steps:
   inputs:
     packageType: runtime
     version: 3.1.4
+
 - task: FileTransform@1
   displayName: "Variables transformation"
   inputs:
     folderPath: '$(System.DefaultWorkingDirectory)/**/*.zip'
     fileType: 'json'
     targetFiles: '**/appsettings.json'
+
 - task: DotNetCoreCLI@2
   displayName: build
   inputs:
@@ -50,6 +52,7 @@ steps:
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
+
 - task: PublishBuildArtifacts@1
   displayName: drop artifact
   inputs:
