@@ -38,6 +38,13 @@ steps:
     projects: 'GameOfLife.Tests/GameOfLife.Tests.csproj'
     arguments: '--no-restore --no-build'
 
+- task: FileTransform@2
+  displayName: "Transform Json"
+  inputs:
+    folderPath: '$(System.DefaultWorkingDirectory)/**/'
+    xmlTransformationRules: ''
+    jsonTargetFiles: '**/appsettings.json'
+
 - task: DotNetCoreCLI@2
   displayName: publish
   inputs:
@@ -45,13 +52,6 @@ steps:
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
-
-- task: FileTransform@2
-  displayName: "Transform Json"
-  inputs:
-    folderPath: '$(System.DefaultWorkingDirectory)/**/'
-    xmlTransformationRules: ''
-    jsonTargetFiles: '**/appsettings.json'
 
 - task: PublishBuildArtifacts@1
   displayName: drop artifact
