@@ -4,17 +4,19 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net;
+using Microsoft.Extensions.Logging;
 
 namespace GameOfLifeAPI.Controllers {
     [Route("api/[controller]/board")]
     [ApiController]
     public class GameOfLifeController : ControllerBase {
-
+        private readonly ILogger<GameOfLifeController> logger;
         private readonly SetNewBoardCommandHandler setNewBoardCommandHandler;
         private readonly GetActualBoardQuery getActualBoardQuery;
         private readonly GetNextGenerationBoardQuery getNextGenerationBoardQuery;
 
-        public GameOfLifeController(SetNewBoardCommandHandler setNewBoardCommandHandler, GetActualBoardQuery getActualBoardQuery, GetNextGenerationBoardQuery getNextGenerationBoardQuery) {
+        public GameOfLifeController(ILogger<GameOfLifeController> logger, SetNewBoardCommandHandler setNewBoardCommandHandler, GetActualBoardQuery getActualBoardQuery, GetNextGenerationBoardQuery getNextGenerationBoardQuery) {
+            this.logger = logger;
             this.setNewBoardCommandHandler = setNewBoardCommandHandler;
             this.getActualBoardQuery = getActualBoardQuery;
             this.getNextGenerationBoardQuery = getNextGenerationBoardQuery;
@@ -28,6 +30,7 @@ namespace GameOfLifeAPI.Controllers {
         [Produces("application/json")]
         public ActionResult<string> Get() {
             string board = getActualBoardQuery.Execute();
+            logger.LogInformation("Llamada al método para obtener la iteración actual del tablero");
             return Ok(board);
         }
 
@@ -39,6 +42,7 @@ namespace GameOfLifeAPI.Controllers {
         [Produces("application/json")]
         public ActionResult<string> PostGetGeneration() {
             string board = getNextGenerationBoardQuery.Execute();
+            logger.LogInformation("Llamada al metodo para obtener la siguiente iteración del tablero");
             return Ok(board);
         }
 
@@ -51,6 +55,7 @@ namespace GameOfLifeAPI.Controllers {
         [Consumes("text/plain")]
         public ActionResult<bool> PostSetGeneration([FromBody] string userBoard) {
             setNewBoardCommandHandler.Execute(userBoard);
+            logger.LogInformation("Llamada al método para establecer un nuevo tablero");
             return Ok(true);
         }
         
