@@ -1,34 +1,27 @@
 ﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
-using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 
 namespace GameOfLifeAPI {
     public class FileHealthChecks : IHealthCheck {
-        private readonly IConfiguration _configuration;
+        private string directoryPath;
 
-        public FileHealthChecks(IConfiguration configuration)
+        public FileHealthChecks()
         {
-            this._configuration = configuration;
+            this.directoryPath = Directory.GetCurrentDirectory();
         }
         public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
         {
-            var path = _configuration["FilePath"];
-            if (File.Exists(path)) {
-                try {
-
-                    var healthCheckResultHealthy = File.Open(path, FileMode.Open);
-                    
-                    healthCheckResultHealthy.Close();
-                    return Task.FromResult(HealthCheckResult.Healthy("A healthy result!"));
-                } catch (Exception e) {
-                    return Task.FromResult(HealthCheckResult.Unhealthy("A unhealthy result! (File exist but can´t read"));
-                }
+            if (Directory.Exists(directoryPath)) {
+                DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath);
+                var atributos = directoryInfo.Attributes;
+                
+                if((atributos & FileAttributes.ReadOnly) != FileAttributes.ReadOnly) return Task.FromResult(HealthCheckResult.Healthy("A healthy result!"));
+                return Task.FromResult(HealthCheckResult.Unhealthy("A unhealthy result! (File exist but can´t write")); 
+                
             }
             return Task.FromResult(HealthCheckResult.Unhealthy("A unhealthy result! (File does not exist)"));
-
         }
     }
 }

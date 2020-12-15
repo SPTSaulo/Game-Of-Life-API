@@ -84,8 +84,6 @@ namespace GameOfLifeAPI {
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "GAMEOFLIFE API V1");
             });
-
-
         }
     }
 }
