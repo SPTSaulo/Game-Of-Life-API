@@ -23,6 +23,7 @@ namespace GameOfLifeAPI {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddApplicationInsightsTelemetry();
             services.AddControllers();
             services.AddMvc(o => o.InputFormatters.Insert(0, new RawRequestBodyFormatter()));
             services.AddSingleton<SaveBoardRepository, SaveBoardInMemory>();
@@ -55,6 +56,7 @@ namespace GameOfLifeAPI {
             services
                 .AddHealthChecks()
                 .AddCheck<FileHealthChecks>("file_health_checks");
+            services.AddApplicationInsightsTelemetry();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

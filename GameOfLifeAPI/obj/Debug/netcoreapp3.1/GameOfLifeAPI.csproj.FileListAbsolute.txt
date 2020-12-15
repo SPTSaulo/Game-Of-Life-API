@@ -194,6 +194,15 @@ C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreap
 C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreapp3.1\HealthChecks.UI.Client.dll
 C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreapp3.1\GameOfLife.dll
 C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreapp3.1\GameOfLife.pdb
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreapp3.1\Microsoft.ApplicationInsights.AspNetCore.dll
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreapp3.1\Microsoft.AI.DependencyCollector.dll
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreapp3.1\Microsoft.AI.EventCounterCollector.dll
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreapp3.1\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreapp3.1\Microsoft.AI.WindowsServer.dll
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreapp3.1\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.ApplicationInsights.dll
 C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\obj\Debug\netcoreapp3.1\GameOfLifeAPI.csproj.CoreCompileInputs.cache
 C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\obj\Debug\netcoreapp3.1\GameOfLifeAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\obj\Debug\netcoreapp3.1\GameOfLifeAPI.MvcApplicationPartsAssemblyInfo.cache
