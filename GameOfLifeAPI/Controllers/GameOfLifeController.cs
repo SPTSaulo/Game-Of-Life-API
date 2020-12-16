@@ -22,15 +22,6 @@ namespace GameOfLifeAPI.Controllers {
             this.getNextGenerationBoardQuery = getNextGenerationBoardQuery;
         }
 
-        [HttpGet("logger")]
-        public ActionResult<bool> ObtenerLogsPrueba()
-        {
-            logger.LogError("Esto es un error");
-            logger.LogWarning("Esto es un warning");
-            logger.LogInformation("Esto es un information");
-            return true;
-        }
-        
         /// <summary>
         /// Return the actual board generation
         /// </summary>
