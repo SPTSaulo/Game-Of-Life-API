@@ -5,6 +5,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <UserSecretsId>ff7a16ae-416a-4385-8396-fca74eab0c8e</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
