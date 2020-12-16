@@ -3,6 +3,7 @@ using GameOfLifeAPI.UseCases;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Net;
 using Microsoft.ApplicationInsights;
 using Microsoft.Extensions.Configuration;
@@ -17,19 +18,15 @@ namespace GameOfLifeAPI.Controllers {
         private readonly GetActualBoardQuery getActualBoardQuery;
         private readonly GetNextGenerationBoardQuery getNextGenerationBoardQuery;
         private readonly IConfiguration _configuration;
-        private TelemetryClient telemetryClient;
+        private readonly TelemetryClient client;
 
 
-        public GameOfLifeController(ILogger<GameOfLifeController> logger, SetNewBoardCommandHandler setNewBoardCommandHandler, GetActualBoardQuery getActualBoardQuery, GetNextGenerationBoardQuery getNextGenerationBoardQuery, IConfiguration configuration) {
+        public GameOfLifeController(ILogger<GameOfLifeController> logger, SetNewBoardCommandHandler setNewBoardCommandHandler, GetActualBoardQuery getActualBoardQuery, GetNextGenerationBoardQuery getNextGenerationBoardQuery) {
             this.logger = logger;
             this.setNewBoardCommandHandler = setNewBoardCommandHandler;
             this.getActualBoardQuery = getActualBoardQuery;
             this.getNextGenerationBoardQuery = getNextGenerationBoardQuery;
-            _configuration = configuration;
-            telemetryClient = new TelemetryClient();
-            telemetryClient.Context.Device.Id = "17";
-            telemetryClient.Context.User.Id = "Saulo";
-            telemetryClient.Context.InstrumentationKey = _configuration["ApplicationInsights:InstrumentationKey"];
+            client = new TelemetryClient();
         }
 
         /// <summary>
@@ -40,10 +37,8 @@ namespace GameOfLifeAPI.Controllers {
         [Produces("application/json")]
         public ActionResult<string> Get() {
             string board = getActualBoardQuery.Execute();
-            telemetryClient.TrackEvent("Llamada al método para obtener la iteración actual del tablero");
-            logger.LogInformation(telemetryClient.InstrumentationKey);
-            logger.LogInformation(telemetryClient.Context.User.Id);
-            logger.LogInformation(telemetryClient.Context.Device.Id);
+            
+            client.TrackEvent("Llamada al método Get (Obtener tablero)");
             logger.LogInformation("Llamada al método para obtener la iteración actual del tablero");
             return Ok(board);
         }
@@ -56,7 +51,7 @@ namespace GameOfLifeAPI.Controllers {
         [Produces("application/json")]
         public ActionResult<string> PostGetGeneration() {
             string board = getNextGenerationBoardQuery.Execute();
-            telemetryClient.TrackEvent("Llamada al método para obtener la siguiente iteración del tablero");
+            client.TrackEvent("Llamada al método Post (Generar nuevo tablero)");
             logger.LogInformation("Llamada al metodo para obtener la siguiente iteración del tablero");
             return Ok(board);
         }
@@ -70,7 +65,7 @@ namespace GameOfLifeAPI.Controllers {
         [Consumes("text/plain")]
         public ActionResult<bool> PostSetGeneration([FromBody] string userBoard) {
             setNewBoardCommandHandler.Execute(userBoard);
-            telemetryClient.TrackEvent("Llamada al método para establecer un nuevo tablero");
+            client.TrackEvent("Llamada al método Post (Establecer tablero)");
             logger.LogInformation("Llamada al método para establecer un nuevo tablero");
             return Ok(true);
         }
