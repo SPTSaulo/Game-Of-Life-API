@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net;
 using Microsoft.ApplicationInsights;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace GameOfLifeAPI.Controllers {
@@ -15,17 +16,20 @@ namespace GameOfLifeAPI.Controllers {
         private readonly SetNewBoardCommandHandler setNewBoardCommandHandler;
         private readonly GetActualBoardQuery getActualBoardQuery;
         private readonly GetNextGenerationBoardQuery getNextGenerationBoardQuery;
+        private readonly IConfiguration _configuration;
         private TelemetryClient telemetryClient;
 
 
-        public GameOfLifeController(ILogger<GameOfLifeController> logger, SetNewBoardCommandHandler setNewBoardCommandHandler, GetActualBoardQuery getActualBoardQuery, GetNextGenerationBoardQuery getNextGenerationBoardQuery) {
+        public GameOfLifeController(ILogger<GameOfLifeController> logger, SetNewBoardCommandHandler setNewBoardCommandHandler, GetActualBoardQuery getActualBoardQuery, GetNextGenerationBoardQuery getNextGenerationBoardQuery, IConfiguration configuration) {
             this.logger = logger;
             this.setNewBoardCommandHandler = setNewBoardCommandHandler;
             this.getActualBoardQuery = getActualBoardQuery;
             this.getNextGenerationBoardQuery = getNextGenerationBoardQuery;
+            _configuration = configuration;
             telemetryClient = new TelemetryClient();
             telemetryClient.Context.Device.Id = "17";
             telemetryClient.Context.User.Id = "Saulo";
+            telemetryClient.Context.InstrumentationKey = _configuration["ApplicationInsights:InstrumentationKey"];
         }
 
         /// <summary>
@@ -37,6 +41,9 @@ namespace GameOfLifeAPI.Controllers {
         public ActionResult<string> Get() {
             string board = getActualBoardQuery.Execute();
             telemetryClient.TrackEvent("Llamada al método para obtener la iteración actual del tablero");
+            logger.LogInformation(telemetryClient.InstrumentationKey);
+            logger.LogInformation(telemetryClient.Context.User.Id);
+            logger.LogInformation(telemetryClient.Context.Device.Id);
             logger.LogInformation("Llamada al método para obtener la iteración actual del tablero");
             return Ok(board);
         }
