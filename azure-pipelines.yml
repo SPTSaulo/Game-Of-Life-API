@@ -16,7 +16,8 @@ pool:
   name: 'Aida'
 
 variables:
-  FilePath : $(path)
+  FilePath : '$(System.DefaultWorkingDirectory)/$(path)'
+  DirectoryLogs : '$(System.DefaultWorkingDirectory)'
 
 steps:
 - task: UseDotNet@2
