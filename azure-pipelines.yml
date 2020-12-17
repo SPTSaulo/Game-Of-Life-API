@@ -16,7 +16,7 @@ pool:
   name: 'Aida'
 
 variables:
-  FilePath : '$(System.DefaultWorkingDirectory)/$(path)'
+  FilePath : '$(System.DefaultWorkingDirectory)\GameOfLifeAPI\$(path)'
   DirectoryLogs : '$(System.DefaultWorkingDirectory)'
 
 steps:
