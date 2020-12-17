@@ -46,6 +46,16 @@ namespace GameOfLifeAPI.Controllers {
         /// <summary>
         /// Return the next board generation
         /// </summary>
+        /// <remarks>
+        ///     Sample request:
+        ///
+        ///     POST /Todo
+        ///     {
+        ///        "id": 1,
+        ///        "name": "Item1",
+        ///        "isComplete": true
+        ///     }
+        /// </remarks>
         /// <returns></returns>
         [HttpPost]
         [Produces("application/json")]

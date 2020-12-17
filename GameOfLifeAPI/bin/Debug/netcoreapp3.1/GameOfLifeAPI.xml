@@ -11,10 +11,20 @@
             <returns></returns>
         </member>
         <member name="M:GameOfLifeAPI.Controllers.GameOfLifeController.PostGetGeneration">
-            <summary>
-            Return the next board generation
-            </summary>
-            <returns></returns>
+             <summary>
+             Return the next board generation
+             </summary>
+             <remarks>
+                 Sample request:
+            
+                 POST /Todo
+                 {
+                    "id": 1,
+                    "name": "Item1",
+                    "isComplete": true
+                 }
+             </remarks>
+             <returns></returns>
         </member>
         <member name="M:GameOfLifeAPI.Controllers.GameOfLifeController.PostSetGeneration(System.String)">
             <summary>
