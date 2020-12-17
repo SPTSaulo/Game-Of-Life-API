@@ -17,7 +17,7 @@ pool:
 
 variables:
   FilePath : '$(System.DefaultWorkingDirectory)\GameOfLifeAPI\$(path)'
-  DirectoryLogs : '$(System.DefaultWorkingDirectory)\\GameOfLifeAPI'
+  DirectoryLogs : '$(System.DefaultWorkingDirectory)\GameOfLifeAPI'
 
 steps:
 - task: UseDotNet@2
