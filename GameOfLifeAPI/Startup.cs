@@ -85,6 +85,7 @@ namespace GameOfLifeAPI {
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "GAMEOFLIFE API V1");
+                c.RoutePrefix = String.Empty;
             });
         }
     }
