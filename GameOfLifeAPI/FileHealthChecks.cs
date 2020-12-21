@@ -30,7 +30,7 @@ namespace GameOfLifeAPI {
                     return Task.FromResult(HealthCheckResult.Unhealthy("A unhealthy result! (File does not have permissions)"));
                 }
             }
-            return Task.FromResult(HealthCheckResult.Unhealthy("A unhealthy result! (File does not exist)"));
+            return Task.FromResult(HealthCheckResult.Unhealthy($"A unhealthy result! (File does not exist {directoryPath})"));
         }
     }
 }
