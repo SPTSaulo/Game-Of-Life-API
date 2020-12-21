@@ -17,7 +17,7 @@ pool:
 
 variables:
   FilePath : '$(path)'
-  DirectoryLogs : '\\'
+  DirectoryLogs : '$(System.DefaultWorkingDirectory)/**/**/dummyLog.txt'
 
 steps:
 - task: UseDotNet@2
