@@ -14,10 +14,11 @@ namespace GameOfLifeAPI {
         private readonly ILogger _loger;
         private string directoryPath;
 
-        public FileHealthChecks(IConfiguration configuration)
+        public FileHealthChecks(IConfiguration configuration, ILogger<FileHealthChecks> loger)
         {
             this.configuration = configuration;
             directoryPath = configuration["DirectoryLogs"];
+            _loger = loger;
         }
         public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
         {
