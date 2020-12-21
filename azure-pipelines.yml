@@ -16,8 +16,8 @@ pool:
   name: 'Aida'
 
 variables:
-  FilePath : '$(path)'
-  DirectoryLogs : '$(System.DefaultWorkingDirectory)/**/**/dummyLog.txt'
+  FilePath : 'GameOfLifeAPI/$(path)'
+  DirectoryLogs : 'GameOfLifeAPI'
 
 steps:
 - task: UseDotNet@2
