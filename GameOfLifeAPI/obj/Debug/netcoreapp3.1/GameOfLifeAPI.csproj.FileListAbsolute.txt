@@ -206,3 +206,4 @@ C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreap
 C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\obj\Debug\netcoreapp3.1\GameOfLifeAPI.csproj.CoreCompileInputs.cache
 C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\obj\Debug\netcoreapp3.1\GameOfLifeAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\obj\Debug\netcoreapp3.1\GameOfLifeAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\sausantana\source\repos\GameOfLifeAPI\GameOfLifeAPI\bin\Debug\netcoreapp3.1\appsettings.Production.json

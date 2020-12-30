@@ -8,8 +8,7 @@ namespace GameOfLifeAPI.Repository {
         private readonly IConfiguration configuration;
         private Board board;
 
-        public SaveBoardInMemory(IConfiguration configuration)
-        {
+        public SaveBoardInMemory(IConfiguration configuration) {
             this.configuration = configuration;
             board = new Board(new Cell[,] {{ new Cell("Alive") }});
         }

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Diagnostics.Eventing.Reader;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.IO;
-using System.Security.AccessControl;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
@@ -12,20 +10,15 @@ namespace GameOfLifeAPI {
     public class FileHealthChecks : IHealthCheck {
         private readonly IConfiguration configuration;
         private readonly ILogger _loger;
-        private string directoryPath;
 
-        public FileHealthChecks(IConfiguration configuration, ILogger<FileHealthChecks> loger)
-        {
+        public FileHealthChecks(IConfiguration configuration, ILogger<FileHealthChecks> loger) {
             this.configuration = configuration;
             _loger = loger;
         }
-        public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
-        {
-            _loger.LogInformation($"El directorio donde se va a escribir el fichero es {Directory.GetCurrentDirectory()}");
-            //_loger.LogInformation($"Existe directorio = {Directory.Exists(directoryPath)}");
+        public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default) {
+            
             try {
-                var filePath = Directory.GetCurrentDirectory() + "//dummyLogs.txt";
-                _loger.LogInformation($"El fichero se va a escribir en {filePath}"); 
+                var filePath = Directory.GetCurrentDirectory() + "/dummyLogs.txt";
                 File.AppendAllText(filePath, "Escribo"); 
                 File.Delete(filePath); 
                 return Task.FromResult(HealthCheckResult.Healthy("Healthy result"));
